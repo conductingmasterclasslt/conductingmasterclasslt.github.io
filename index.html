@@ -59,6 +59,25 @@
             margin: 0 auto;
         }
 
+        .header {
+            gap: 50px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .menu-button {
+            all: unset;
+            display: none;
+            cursor: pointer;
+        }
+
+        #navigation {
+            display: flex;
+            gap: 10px;
+        }
+
         .section {
             margin-bottom: 40px;
         }
@@ -71,6 +90,28 @@
             font-size: 0.7em;
         }
 
+        @media screen and (max-width: 850px) {
+            .menu-button {
+                display: block;
+            }
+
+            #navigation {
+                display: none;
+                position: absolute;
+                flex-direction: column;
+                overflow: hidden;
+                right: 0;
+                top: 80%;
+                padding: 0 0 3px 3px;
+                align-items: end;
+                background: #fff;
+            }
+
+            #navigation.active {
+                display: flex;
+            }
+        }
+
         @media screen and (max-width: 600px) {
             img {
                 max-width: 100%;
@@ -78,8 +119,18 @@
                 float: none;
             }
         }
+
+        @media screen and (max-width: 400px) {
+            h1 {
+                font-size: 1.5em;
+            }
+        }
     </style>
     <script>
+        function toggleNavigation() {
+            navigation.classList.toggle('active')
+        }
+
         function loadForm() {
             form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSf4DnQPi529FNJ0-V6jha4oT33oT1qhNGGWjGaIghMpzQoFjg/viewform?embedded=true'
             form.height = 1690
@@ -90,7 +141,17 @@
 </head>
 <body>
     <div class="content">
-        <h1>Conducting Masterclass</h1>
+        <div class="header">
+            <h1>Conducting Masterclass</h1>
+            <button class="menu-button" onclick="toggleNavigation()">MENU</button>
+            <div id="navigation">
+                <a href="#about">ABOUT</a>
+                <a href="#repertoire">REPERTOIRE</a>
+                <a href="#fees">FEES</a>
+                <a href="#contacts">CONTACTS</a>
+                <a href="#registration">REGISTRATION</a>
+            </div>
+        </div>
         <div class="section">
             <img class="right" src="images/1.jpg" alt="Johannes Schlaefli" width="1000" height="750" />
             <h2 id="about">ABOUT</h2>
@@ -133,7 +194,7 @@
 
         <div class="section">
             <img class="right" src="images/3.jpg" alt="Johannes Schlaefli" width="1000" height="563" />
-            <h2 id="repertoire">FEES</h2>
+            <h2 id="fees">FEES</h2>
             <p>
                 Application fee: 50 euros<br>
                 Course fee (active participants): 980 euros*<br>
