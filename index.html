@@ -13,6 +13,10 @@
             border: 0;
         }
 
+        html {
+            scroll-padding: 35px;
+        }
+
         body {
             font-family: 'Unbounded', cursive;
             margin: 25px 10px 50px;
@@ -69,6 +73,14 @@
             }
         }
     </style>
+    <script>
+        function loadForm() {
+            form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSf4DnQPi529FNJ0-V6jha4oT33oT1qhNGGWjGaIghMpzQoFjg/viewform?embedded=true'
+            form.height = 1690
+            form.width = Math.min(form.parentNode.scrollWidth, 640)
+            loadText.remove()
+        }
+    </script>
 </head>
 <body>
     <div class="content">
@@ -139,6 +151,15 @@
             <h2 id="contacts">CONTACTS</h2>
             Adomas Morkūnas-Budrys<br>
             <a href="mailto:info@conductingmasterclass.lt">info@conductingmasterclass.lt</a>
+        </div>
+
+        <div class="section">
+            <h2 id="registration">REGISTRATION</h2>
+            <p id="loadText">
+                To start the registration, please click <a href="#registration" onclick="loadForm()">here</a>*<br>
+                <span class="small">*We use Google Forms for registration processing. By loading the registration form you agree to Google's <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> and <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.</span>
+            </p>
+            <iframe id="form" src="" width="0" height="0" frameborder="0" marginheight="0" marginwidth="0"></iframe>
         </div>
     </div>
 </body>
