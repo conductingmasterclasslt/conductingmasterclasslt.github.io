@@ -40,8 +40,13 @@
         }
 
         img {
-            max-width: 50%;
+            max-width: 49%;
             height: auto;
+        }
+
+        img.cover {
+            max-width: 100%;
+            margin-bottom: 0;
         }
 
         img.right {
@@ -65,6 +70,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
+            z-index: 1;
         }
 
         .menu-button {
@@ -79,11 +85,18 @@
         }
 
         .section {
+            position: relative;
             margin-bottom: 40px;
         }
 
         .section:last-child {
             margin-bottom: 100px;
+        }
+
+        .caption {
+            position: absolute;
+            top: 0;
+            left: 20px;
         }
 
         .small {
@@ -110,6 +123,11 @@
             #navigation.active {
                 display: flex;
             }
+
+            .caption {
+                left: 2vw;
+                font-size: 2.3vw;
+            }
         }
 
         @media screen and (max-width: 600px) {
@@ -131,6 +149,11 @@
             navigation.classList.toggle('active')
         }
 
+        function closeNavigation(event) {
+            if (event.target.classList.contains('menu-button')) return
+            navigation.classList.remove('active')
+        }
+
         function loadForm() {
             form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSf4DnQPi529FNJ0-V6jha4oT33oT1qhNGGWjGaIghMpzQoFjg/viewform?embedded=true'
             form.height = 1690
@@ -140,7 +163,7 @@
     </script>
 </head>
 <body>
-    <div class="content">
+    <div class="content" onclick="closeNavigation(event)">
         <div class="header">
             <h1>Conducting Masterclass</h1>
             <button class="menu-button" onclick="toggleNavigation()">MENU</button>
@@ -153,14 +176,16 @@
             </div>
         </div>
         <div class="section">
-            <img class="right" src="images/1.jpg" alt="Johannes Schlaefli" width="1000" height="750" />
-            <h2 id="about">ABOUT</h2>
-            <p>
+            <img class="cover" src="images/1.jpg" alt="Johannes Schlaefli" width="1000" height="563" />
+            <p class="caption">
                 Prof. Johannes Schlaefli<br>
                 November 6-10, 2023<br>
                 St. Christopher's orchestra<br>
                 in Vilnius, Lithuania<br>
             </p>
+        </div>
+        <div class="section">
+            <h2 id="about">ABOUT</h2>
             <p>
                 Application deadline: 31st of August 2023
             </p>
@@ -181,7 +206,7 @@
         </div>
 
         <div class="section">
-            <img class="left" src="images/2.jpg" alt="Johannes Schlaefli" width="1000" height="667" />
+            <img class="left" src="images/2.jpg" alt="Johannes Schlaefli" width="1000" height="750" />
             <h2 id="repertoire">REPERTOIRE</h2>
             B. Bartok: Divertimento for String Orchestra<br>
             A. Dvorak: Serenade for Strings, op. 22 (2nd and 4th mov.)<br>
@@ -191,9 +216,9 @@
             A. Webern: Langsamer Satz
             <div style="clear: both"></div>
         </div>
-
+        
         <div class="section">
-            <img class="right" src="images/3.jpg" alt="Johannes Schlaefli" width="1000" height="563" />
+            <img class="right" src="images/3.jpg" alt="Johannes Schlaefli" width="1000" height="667" />
             <h2 id="fees">FEES</h2>
             <p>
                 Application fee: 50 euros<br>
