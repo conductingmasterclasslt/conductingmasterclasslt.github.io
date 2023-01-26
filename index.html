@@ -43,18 +43,11 @@
         }
 
         img {
-            max-width: 49%;
             height: auto;
         }
 
-        img.right {
-            float: right;
-            margin-left: 20px;
-        }
-
-        img.left {
-            float: left;
-            margin-right: 20px;
+        img.mobile {
+            display: none;
         }
 
         /* Header and Navigation */
@@ -178,7 +171,14 @@
             img {
                 max-width: 100%;
                 margin-bottom: 25px;
-                float: none;
+            }
+
+            .background {
+                display: none;
+            }
+
+            img.mobile {
+                display: block;
             }
         }
 
@@ -256,6 +256,7 @@
         </div>
 
         <div class="section">
+            <img class="mobile" src="images/2.jpg" alt="Johannes Schlaefli" width="1000" height="750" />
             <h2 id="repertoire">REPERTOIRE</h2>
             B. Bartok: Divertimento for String Orchestra<br>
             A. Dvorak: Serenade for Strings, op. 22 (2nd and 4th mov.)<br>
@@ -266,6 +267,7 @@
         </div>
         
         <div class="section">
+            <img class="mobile" src="images/3.jpg" alt="Johannes Schlaefli" width="1000" height="667" />
             <h2 id="fees">FEES</h2>
             <p>
                 Application fee: 50 euros<br>
