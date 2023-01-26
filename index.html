@@ -21,7 +21,7 @@
         }
 
         html {
-            scroll-padding: 35px;
+            scroll-padding: 30px;
             scroll-behavior: smooth;
         }
 
@@ -54,6 +54,7 @@
 
         .header {
             margin-top: 25px;
+            height: 100vh;
         }
 
         .header,
@@ -104,7 +105,7 @@
             position: absolute;
             top: 0;
             width: 100%;
-            padding-top: 20px;
+            padding-top: 30px;
         }
 
         .cover,
@@ -130,7 +131,7 @@
         .background div {
             width: 100%;
             height: 100%;
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, .85);
         }
 
         p:last-of-type {
@@ -138,7 +139,7 @@
         }
 
         .small {
-            font-size: 0.7em;
+            font-size: .7em;
             margin-top: 0;
             margin-bottom: 5px;
         }
@@ -147,6 +148,7 @@
             position: relative;
             text-align: center;
             margin-bottom: 1em;
+            font-size: .85em;
         }
 
         #imprint {
@@ -192,9 +194,21 @@
         }
 
         @media screen and (max-width: 600px) {
+            html {
+                scroll-padding: 20px;
+            }
+
             img {
                 max-width: 100%;
                 margin-bottom: 25px;
+            }
+
+            .header {
+                height: auto;
+            }
+
+            .content {
+                padding-top: 0;
             }
 
             .background {
