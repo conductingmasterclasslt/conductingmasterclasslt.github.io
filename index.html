@@ -139,6 +139,19 @@
 
         .small {
             font-size: 0.7em;
+            margin-top: 0;
+            margin-bottom: 5px;
+        }
+
+        .footer {
+            position: relative;
+            text-align: center;
+            margin-bottom: 1em;
+        }
+
+        #imprint {
+            display: none;
+            margin: 1em 0;
         }
 
         /* Media Queries */
@@ -199,24 +212,6 @@
             }
         }
     </style>
-    <script>
-        function toggleNavigation() {
-            document.getElementById('navigation').classList.toggle('active')
-        }
-
-        function closeNavigation(event) {
-            if (event.target.classList.contains('menu-button')) return
-            document.getElementById('navigation').classList.remove('active')
-        }
-
-        function loadForm() {
-            const form = document.getElementById('form')
-            form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSf4DnQPi529FNJ0-V6jha4oT33oT1qhNGGWjGaIghMpzQoFjg/viewform?embedded=true'
-            form.height = 1690
-            form.width = Math.min(form.parentNode.scrollWidth, 640)
-            document.getElementById('loadText').remove()
-        }
-    </script>
 </head>
 <body onclick="closeNavigation(event)">
     <div class="header">
@@ -296,7 +291,7 @@
                     Travel and accommodation expenses are not covered.
                 </p>
                 <p class="small">
-                    * The students accepted to the masterclass can apply for a grant of 500 euros, making the course fee more affordable. It will be possible to grant up to 2 people. The participants will receive more information about it privately once they receive an acceptance letter.<br>
+                    * The students accepted to the masterclass can apply for a grant of 500 euros, making the course fee more affordable. It will be possible to grant up to 2 people. The participants will receive more information about it privately once they receive an acceptance letter.
                 </p>
                 <p class="small">
                     ** Students of the Lithuanian Academy of Music and Theatre are allowed to observe the masterclasses free of charge. About your participation, please inform us in advance.
@@ -319,7 +314,41 @@
                 </p>
                 <iframe id="form" src="" width="0" height="0" frameborder="0" marginheight="0" marginwidth="0" title="Registration Form"></iframe>
             </div>
+            <div class="footer">
+                <span id="date"></span>
+                All rights reserved | <a href="#imprint" onclick="toggleImprint()">Imprint</a>
+                <div id="imprint">
+                    Adomas Morkūnas-Budrys<br>
+                    K. Kalinausko g. 11-14, Vilnius, 03107, LT<br>
+                    info@conductingmasterclass.lt
+                </div>
+            </div>
         </div>
     </div>
+    <script>
+        function toggleNavigation() {
+            document.getElementById('navigation').classList.toggle('active')
+        }
+
+        function closeNavigation(event) {
+            if (event.target.classList.contains('menu-button')) return
+            document.getElementById('navigation').classList.remove('active')
+        }
+
+        function loadForm() {
+            const form = document.getElementById('form')
+            form.src = 'https://docs.google.com/forms/d/e/1FAIpQLSf4DnQPi529FNJ0-V6jha4oT33oT1qhNGGWjGaIghMpzQoFjg/viewform?embedded=true'
+            form.height = 1690
+            form.width = Math.min(form.parentNode.scrollWidth, 640)
+            document.getElementById('loadText').remove()
+        }
+
+        function toggleImprint() {
+            const imprint = document.getElementById('imprint')
+            imprint.style.display = getComputedStyle(imprint).display === 'none' ? 'block' : 'none'
+        }
+
+        document.getElementById('date').innerHTML = new Date().getFullYear()
+    </script>
 </body>
 </html>
