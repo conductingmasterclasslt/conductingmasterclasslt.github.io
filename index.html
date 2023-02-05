@@ -54,7 +54,9 @@
 
         .header {
             margin-top: 25px;
-            height: 100vh;
+            height: calc(100vh - 25px);
+            display: flex;
+            flex-direction: column;
         }
 
         .header,
@@ -83,13 +85,26 @@
             display: flex;
             gap: 10px;
         }
+        
+        .cover {
+            min-height: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-        .cover img {
+        .cover .container {
+            position: relative;
+            height: 100%;
+            max-width: 100%;
+            aspect-ratio: 1000/563;
+        }
+
+        .cover .container img {
             max-width: 100%;
             margin-bottom: 0;
         }
 
-        .cover .caption {
+        .cover .container .caption {
             position: absolute;
             top: 0;
             left: 20px;
@@ -187,7 +202,7 @@
                 display: flex;
             }
 
-            .cover .caption {
+            .cover .container .caption {
                 left: 2vw;
                 font-size: 2.3vw;
             }
@@ -241,13 +256,15 @@
             </div>
         </div>
         <div class="cover">
-            <img src="images/1.jpg" alt="Johannes Schlaefli" width="1000" height="563" />
-            <p class="caption">
-                Prof. Johannes Schlaefli<br>
-                November 6-10, 2023<br>
-                St. Christopher's orchestra<br>
-                in Vilnius, Lithuania<br>
-            </p>
+            <div class="container">
+                <img src="images/1.jpg" alt="Johannes Schlaefli" width="1000" height="563" />
+                <p class="caption">
+                    Prof. Johannes Schlaefli<br>
+                    November 6-10, 2023<br>
+                    St. Christopher's orchestra<br>
+                    in Vilnius, Lithuania<br>
+                </p>
+            </div>
         </div>
     </div>
     <div class="wrapper">
