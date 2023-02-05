@@ -60,7 +60,7 @@
         }
 
         .header,
-        .content .section {
+        #content .section {
             max-width: 970px;
             margin-left: auto;
             margin-right: auto;
@@ -116,7 +116,7 @@
             position: relative;
         }
 
-        .content {
+        #content {
             position: absolute;
             top: 0;
             width: 100%;
@@ -140,7 +140,7 @@
             width: 100%;
             background-size: cover;
             background-position: center;
-            margin-bottom: -60vh;
+            margin-bottom: -100vh;
         }
 
         .background div {
@@ -175,7 +175,7 @@
 
         @media screen and (max-width: 990px) {
             .header,
-            .content .section {
+            #content .section {
                 margin-left: 10px;
                 margin-right: 10px;
             }
@@ -222,7 +222,7 @@
                 height: auto;
             }
 
-            .content {
+            #content {
                 padding-top: 0;
             }
 
@@ -269,8 +269,8 @@
     </div>
     <div class="wrapper">
         <div class="background" style="background-image: url('images/2.jpg')"><div></div></div>
-        <div style="height: 100vh"></div>
-        <div class="content">
+        <div id="scroll-placeholder"></div>
+        <div id="content">
             <div class="section">
                 <h2 id="about">ABOUT</h2>
                 <p>
@@ -375,14 +375,23 @@
             form.height = 1690
             form.width = Math.min(form.parentNode.scrollWidth, 640)
             document.getElementById('loadText').remove()
+            resize()
         }
 
         function toggleImprint() {
             const imprint = document.getElementById('imprint')
-            imprint.style.display = getComputedStyle(imprint).display === 'none' ? 'block' : 'none'
+            const hidden = getComputedStyle(imprint).display === 'none'
+            imprint.style.display = hidden ? 'block' : 'none'
+            if (!hidden) location.hash = ''
+        }
+
+        function resize() {
+            document.getElementById('scroll-placeholder').style.height = document.getElementById('content').scrollHeight + 'px'
         }
 
         document.getElementById('date').innerHTML = new Date().getFullYear()
+        window.addEventListener('resize', resize)
+        resize()
     </script>
 </body>
 </html>
