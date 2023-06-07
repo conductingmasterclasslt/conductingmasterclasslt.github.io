@@ -362,7 +362,7 @@
                     To start the registration, please click <a href="#registration" onclick="loadForm()">here</a>*<br>
                     <span class="small">*We use Google Forms for registration processing. By loading the registration form you agree to Google's <a href="https://policies.google.com/terms" target="_blank">Terms of Service</a> and <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy</a>.</span>
                 </p>
-                <iframe id="form" src="" width="0" height="0" frameborder="0" marginheight="0" marginwidth="0" title="Registration Form"></iframe>
+                <iframe id="form" src="" width="0" height="0" frameborder="0" marginheight="0" marginwidth="0" title="Registration Form" onload="formOnload()"></iframe>
             </div>
             <div class="footer">
                 <span id="date"></span>
@@ -392,6 +392,13 @@
             form.width = Math.min(form.parentNode.scrollWidth, 640)
             document.getElementById('loadText').remove()
             resize()
+        }
+
+        function formOnload() {
+            const form = document.getElementById('form')
+            if (form.src.includes('docs.google.com')) {
+                document.getElementById('registration').scrollIntoView()
+            }
         }
 
         function toggleImprint() {
